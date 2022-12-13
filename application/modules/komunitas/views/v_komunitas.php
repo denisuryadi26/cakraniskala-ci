@@ -3,7 +3,7 @@
 		<div class="row justify-content-center mb-1 pb-1 ">
 			<div class="col-md-7 heading-section text-center ftco-animate">
 				<span class="subheading">Kabar Terkini</span>
-				<h2>Seputar Komunitas Rumah Caper</h2>
+				<h2>Seputar Pencak Silat Cakra Niskala</h2>
 			</div>
 		</div>
 		<div class="row d-flex">
@@ -71,17 +71,17 @@
 			<div class="col-md-6 pl-md-5">
 				<div class="row justify-content-start pt-3 pb-3">
 					<div class="col-md-12 heading-section ftco-animate">
-						<span class="subheading">Komunitas masa kini</span>
+						<span class="subheading">Tentang Kami</span>
 						<h2 class="mb-4"><?= $lain->heading ?></h2>
-						
+
 						<div class="tabulation-2 mt-4">
-							
-							
-								
-								
+
+
+
+
 							</div>
 						</div>
-						
+
 					</div>
 				</div>
 			</div>

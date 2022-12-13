@@ -25,6 +25,56 @@ class Dashboard_model extends CI_Model
         }
     }
 
+    public function allAnggota()
+    {
+        $allUser = $this->db->where('level', 3)->get('users');
+        if ($allUser->num_rows() > 0) {
+            return $allUser->num_rows();
+        } else {
+            return 0;
+        }
+    }
+
+    public function allPengurus()
+    {
+        $allUser = $this->db->where('level', 2)->get('users');
+        if ($allUser->num_rows() > 0) {
+            return $allUser->num_rows();
+        } else {
+            return 0;
+        }
+    }
+
+    public function allAnggotaAktif()
+    {
+        $allUser = $this->db->where('status', 'AKTIF')->get('users');
+        if ($allUser->num_rows() > 0) {
+            return $allUser->num_rows();
+        } else {
+            return 0;
+        }
+    }
+
+    public function allAnggotaNonAktif()
+    {
+        $allUser = $this->db->where('status', 'TIDAK AKTIF')->get('users');
+        if ($allUser->num_rows() > 0) {
+            return $allUser->num_rows();
+        } else {
+            return 0;
+        }
+    }
+
+    public function getUnlat()
+    {
+        $allUnlat = $this->db->get('unlat');
+        if ($allUnlat->num_rows() > 0) {
+            return $allUnlat->num_rows();
+        } else {
+            return 0;
+        }
+    }
+
     // Cek jumlah News
     public function news()
     {
@@ -119,6 +169,34 @@ class Dashboard_model extends CI_Model
         unlink('./frontend/assets/images/users/' . $row->foto);
         $this->db->where('id', $id);
         $this->db->delete('users');
+        return true;
+    }
+
+    // Unlat
+    public function getDataUnlat()
+    {
+        $this->db->select('id AS id,
+		keterangan AS keterangan,
+		');
+        $this->db->from('unlat');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function insert_unlat($input)
+    {
+        return $this->db->insert('unlat', $input);
+    }
+
+    public function update_unlat($id, $data)
+    {
+        return $this->db->where('id', $id)->update('unlat', $data);
+    }
+
+    public function delete_unlat($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('unlat');
         return true;
     }
 

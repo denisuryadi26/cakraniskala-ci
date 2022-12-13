@@ -116,6 +116,8 @@ class Users extends CI_Controller
             'message'		=> $this->Users_model->getdata()->result(),
             'userlist'		=> $this->Users_model->view()->result_array(),
             'usersl'		=> $this->Users_model->view()->result_array(),
+			'role1'			=> $this->Login_model->view1()->result_array(),
+			'unlat'			=> $this->Login_model->viewunlat()->result_array(),
             'agama'			=> $this->Login_model->viewagama()->result_array(),
             'program'		=> $this->Login_model->viewprogram()->result_array(),
             'Profile'		=> true,
@@ -128,44 +130,64 @@ class Users extends CI_Controller
     public function profedit()
     {
         $id	= $this->session->userdata('id');
-        
-        $this->form_validation->set_rules("nama_admin", "Nama_admin", "trim|min_length[5]|required");
-        $this->form_validation->set_rules("alamat", "Alamat", "trim|min_length[5]|required");
-        // $this->form_validation->set_rules("agama", "Agama", "trim|required");
-        $this->form_validation->set_rules("organisasi", "Organisasi", "trim|required");
-        $this->form_validation->set_rules("no_hp", "No_hp", "trim|required");
-        $this->form_validation->set_rules("email", "Email", "trim|required|trim");
-        $this->form_validation->set_rules("password", "Password", "trim|required");
-        $this->form_validation->set_rules("repassword", "Repassword", "trim|required|matches[password]");
-        // $this->form_validation->set_rules("program", "Program", "trim|required");
-        if ($this->form_validation->run() == false) {
-            $data = [
-                'titles'		=> "Dashboard Administrator",
-                'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
-                'allmessages'	=> $this->Dashboard_model->allMessages(),
-                'usersl'		=> $this->Dashboard_model->viewprof($id)->result_array(),
-                'agama'			=> $this->Login_model->viewagama()->result_array(),
-                'program'		=> $this->Login_model->viewprogram()->result_array(),
-                'profile'		=> true,
-                'breadcumb'		=> "Profile",
-                'view'			=> "v_profuser"
-            ];
-            $this->load->view("index", $data);
-        } else {
-            $input = [
-                'nama_admin'	=> htmlspecialchars($this->input->post('nama_admin')),
-                'alamat'		=> htmlspecialchars($this->input->post('alamat')),
-                'agama'			=> htmlspecialchars($this->input->post('agama')),
-                'organisasi'	=> htmlspecialchars($this->input->post('organisasi')),
-                'nohp	'		=> htmlspecialchars($this->input->post('no_hp')),
-                'email'			=> htmlspecialchars($this->input->post('email')),
-                'password'		=> md5(htmlspecialchars($this->input->post('password'))),
-                'program'		=> htmlspecialchars($this->input->post('program'))
-            ];
-            if ($this->Dashboard_model->update_prof($id, $input)) {
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data User Berhasil di Update <br>Username : ' . $input['nama_admin'] . '</div>');
-            }
-            redirect('users/profile');
-        }
+
+        // $this->form_validation->set_rules("nama_admin", "Nama_admin", "trim|min_length[5]|required");
+        // $this->form_validation->set_rules("alamat", "Alamat", "trim|min_length[5]|required");
+        // // $this->form_validation->set_rules("agama", "Agama", "trim|required");
+        // $this->form_validation->set_rules("organisasi", "Organisasi", "trim|required");
+        // $this->form_validation->set_rules("no_hp", "No_hp", "trim|required");
+        // $this->form_validation->set_rules("email", "Email", "trim|required|trim");
+        // $this->form_validation->set_rules("password", "Password", "trim|required");
+        // $this->form_validation->set_rules("repassword", "Repassword", "trim|required|matches[password]");
+        // // $this->form_validation->set_rules("program", "Program", "trim|required");
+        // if ($this->form_validation->run() == false) {
+        //     $data = [
+        //         'titles'		=> "Dashboard Administrator",
+        //         'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+        //         'allmessages'	=> $this->Dashboard_model->allMessages(),
+        //         'usersl'		=> $this->Dashboard_model->viewprof($id)->result_array(),
+        //         'agama'			=> $this->Login_model->viewagama()->result_array(),
+        //         'role1'			=> $this->Login_model->view1()->result_array(),
+        //         'unlat'			=> $this->Login_model->viewunlat()->result_array(),
+        //         'program'		=> $this->Login_model->viewprogram()->result_array(),
+        //         'profile'		=> true,
+        //         'breadcumb'		=> "Profile",
+        //         'view'			=> "v_profuser"
+        //     ];
+        //     $this->load->view("index", $data);
+        // } else {
+			// $config['upload_path'] 		= './frontend/assets/images/users';
+			// $config['allowed_types'] 	= 'jpg|png|jpeg';
+			// $config['max_size'] 		= 2048;
+			// $config['file_name'] 		= 'users-' . date('Y-m-d');
+
+			// $this->load->library('upload', $config);
+			// if (!$this->upload->do_upload('foto')) {
+			// 	$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Upload Foto Gagal, Pastikan file dibawah 2Mb dan Berformat jpg,png,img. </div>');
+			// 	redirect('users/profile');
+			// } else {
+				// $image = $this->input->post('image');
+				$input = [
+					'nama_admin'	=> htmlspecialchars($this->input->post('nama_admin')),
+					'alamat'		=> htmlspecialchars($this->input->post('alamat')),
+					'unlat'			=> htmlspecialchars($this->input->post('unlat')),
+					'level'			=> htmlspecialchars($this->input->post('jabatan')),
+					'tgl_lahir'		=> htmlspecialchars($this->input->post('tgl_lahir')),
+					'agama'			=> htmlspecialchars($this->input->post('agama')),
+					'organisasi'	=> htmlspecialchars($this->input->post('organisasi')),
+					'nohp	'		=> htmlspecialchars($this->input->post('no_hp')),
+					'email'			=> htmlspecialchars($this->input->post('email')),
+					'password'		=> md5(htmlspecialchars($this->input->post('password'))),
+					'program'		=> htmlspecialchars($this->input->post('program')),
+					// 'foto'			=> $this->upload->data('file_name')
+					// 'foto'			=> $this->input->post('image')
+				];
+				// print_r($input);die();
+				if ($this->Dashboard_model->update_prof($id, $input)) {
+					$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data User Berhasil di Update <br>Username : ' . $input['nama_admin'] . '</div>');
+				}
+				redirect('users/profile');
+			// }
+        // }
     }
 }

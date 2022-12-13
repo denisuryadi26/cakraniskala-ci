@@ -75,8 +75,8 @@
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Users</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $alluser; ?></div>
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Anggota</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $allAnggota; ?></div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -85,6 +85,76 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Earnings (Monthly) Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Pengurus/Pelatih</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $allPengurus; ?></div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-users fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+				<!-- Earnings (Monthly) Card Example -->
+				<div class="col-xl-3 col-md-6 mb-4">
+					<div class="card border-left-success shadow h-100 py-2">
+						<div class="card-body">
+							<div class="row no-gutters align-items-center">
+								<div class="col mr-2">
+									<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Anggota Aktif</div>
+									<div class="h5 mb-0 font-weight-bold text-gray-800"><?= $allAnggotaAktif; ?></div>
+								</div>
+								<div class="col-auto">
+									<i class="fas fa-users fa-2x text-gray-300"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Earnings (Monthly) Card Example -->
+				<div class="col-xl-3 col-md-6 mb-4">
+					<div class="card border-left-danger shadow h-100 py-2">
+						<div class="card-body">
+							<div class="row no-gutters align-items-center">
+								<div class="col mr-2">
+									<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Anggota Tidak Aktif</div>
+									<div class="h5 mb-0 font-weight-bold text-gray-800"><?= $allAnggotaNonAktif; ?></div>
+								</div>
+								<div class="col-auto">
+									<i class="fas fa-users fa-2x text-gray-300"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Earnings (Monthly) Card Example -->
+				<div class="col-xl-3 col-md-6 mb-4">
+					<div class="card border-left-success shadow h-100 py-2">
+                        <a href="dashboard/unlat">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Unlat</div>
+										<div class="h5 mb-0 font-weight-bold text-gray-800"><?= $getUnlat; ?></div>
+                                    </div>
+                                    <div class="col-auto">
+										<i class="fa fa-home fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+					</div>
+				</div>
 
                 <!-- Earnings (Monthly) Card Example -->
                 <div class="col-xl-3 col-md-6 mb-4">

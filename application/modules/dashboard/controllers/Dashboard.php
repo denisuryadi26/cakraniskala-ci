@@ -24,7 +24,11 @@ class Dashboard extends CI_Controller
         $data	= [
             'titles'	=> "Dashboard User",
             'komunitas'	=> $this->GetKomunitas_model->getKomunitas(),
-            'alluser'	=> $this->Dashboard_model->allUser(),
+            'allAnggota'	=> $this->Dashboard_model->allAnggota(),
+            'allPengurus'	=> $this->Dashboard_model->allPengurus(),
+            'allAnggotaAktif'	=> $this->Dashboard_model->allAnggotaAktif(),
+            'allAnggotaNonAktif'	=> $this->Dashboard_model->allAnggotaNonAktif(),
+            'getUnlat'	=> $this->Dashboard_model->getUnlat(),
             'usersl'	=> $this->Dashboard_model->view()->result_array(),
             'new'		=> $this->Dashboard_model->news(),
             'files'		=> $this->Dashboard_model->get_umum()->result(),
@@ -118,6 +122,56 @@ class Dashboard extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Error To delete your Users data</div>');
         }
         redirect('dashboard/users');
+    }
+
+    // **************
+    // UNLAT
+    // **************
+    public function unlat()
+    {
+        $data	= [
+            'titles'		=> "Dashboard User",
+            'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+            'usersl'		=> $this->Dashboard_model->view()->result_array(),
+            'role'			=> $this->Login_model->view()->result_array(),
+            'unlat'			=> $this->Dashboard_model->getDataUnlat()->result(),
+            'users'			=> true,
+            'breadcumb'		=> "Unlat",
+            'view'			=> "v_unlat"
+        ];
+        $this->load->view('index', $data);
+    }
+
+    public function addUnlat($id = 0)
+    {
+        if ($id != 0) {
+            $data = [
+                'keterangan' => ($this->input->post('keterangan'))
+            ];
+            // echo json_encode($data, true);
+            if ($this->Dashboard_model->update_unlat($id, $data)) {
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berita Berhasil di Update <br>Judul : ' . $data['keterangan'] . '</div>');
+            };
+            redirect('dashboard/unlat');
+        } else {
+            $input = [
+                'keterangan' 	=> ($this->input->post('keterangan'))
+            ];
+            if ($this->Dashboard_model->insert_unlat($input)) {
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berita Berhasil Ditambahkan</div>');
+            }
+            redirect('dashboard/unlat');
+        }
+    }
+
+    public function deleteUnlat($id)
+    {
+        if ($this->Dashboard_model->delete_unlat($id)) {
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congrulation your unlat data has been deleted</div>');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Error To delete your news data</div>');
+        }
+        redirect('dashboard/unlat');
     }
 
     // **************
@@ -497,6 +551,8 @@ class Dashboard extends CI_Controller
                 'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
                 'allmessages'	=> $this->Dashboard_model->allMessages(),
                 'usersl'		=> $this->Dashboard_model->viewprof($id)->result_array(),
+                'role1'			=> $this->Login_model->view1()->result_array(),
+                'unlat'			=> $this->Login_model->viewunlat()->result_array(),
                 'agama'			=> $this->Login_model->viewagama()->result_array(),
                 'program'		=> $this->Login_model->viewprogram()->result_array(),
                 'profile'		=> true,
@@ -511,32 +567,37 @@ class Dashboard extends CI_Controller
     {
         $id	= $this->session->userdata('id');
 
-        $this->form_validation->set_rules("nama_admin", "Nama_admin", "trim|min_length[5]|required");
-        $this->form_validation->set_rules("alamat", "Alamat", "trim|min_length[5]|required");
-        // $this->form_validation->set_rules("agama", "Agama", "trim|required");
-        $this->form_validation->set_rules("organisasi", "Organisasi", "trim|required");
-        $this->form_validation->set_rules("no_hp", "No_hp", "trim|required");
-        $this->form_validation->set_rules("email", "Email", "trim|required|trim");
-        $this->form_validation->set_rules("password", "Password", "trim|required");
-        $this->form_validation->set_rules("repassword", "Repassword", "trim|required|matches[password]");
-        // $this->form_validation->set_rules("program", "Program", "trim|required");
-        if ($this->form_validation->run() == false) {
-            $data = [
-                'titles'		=> "Dashboard Administrator",
-                'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
-                'allmessages'	=> $this->Dashboard_model->allMessages(),
-                'usersl'		=> $this->Dashboard_model->viewprof($id)->result_array(),
-                'agama'			=> $this->Login_model->viewagama()->result_array(),
-                'program'		=> $this->Login_model->viewprogram()->result_array(),
-                'profile'		=> true,
-                'breadcumb'		=> "Profile",
-                'view'			=> "v_profuser"
-            ];
-            $this->load->view("index", $data);
-        } else {
+        // $this->form_validation->set_rules("nama_admin", "Nama_admin", "trim|min_length[5]|required");
+        // $this->form_validation->set_rules("alamat", "Alamat", "trim|min_length[5]|required");
+        // // $this->form_validation->set_rules("agama", "Agama", "trim|required");
+        // $this->form_validation->set_rules("organisasi", "Organisasi", "trim|required");
+        // $this->form_validation->set_rules("no_hp", "No_hp", "trim|required");
+        // $this->form_validation->set_rules("email", "Email", "trim|required|trim");
+        // $this->form_validation->set_rules("password", "Password", "trim|required");
+        // $this->form_validation->set_rules("repassword", "Repassword", "trim|required|matches[password]");
+        // // $this->form_validation->set_rules("program", "Program", "trim|required");
+        // if ($this->form_validation->run() == false) {
+        //     $data = [
+        //         'titles'		=> "Dashboard Administrator",
+        //         'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+        //         'allmessages'	=> $this->Dashboard_model->allMessages(),
+        //         'usersl'		=> $this->Dashboard_model->viewprof($id)->result_array(),
+        //         'agama'			=> $this->Login_model->viewagama()->result_array(),
+        //         'role1'			=> $this->Login_model->view1()->result_array(),
+        //         'unlat'			=> $this->Login_model->viewunlat()->result_array(),
+        //         'program'		=> $this->Login_model->viewprogram()->result_array(),
+        //         'profile'		=> true,
+        //         'breadcumb'		=> "Profile",
+        //         'view'			=> "v_profuser"
+        //     ];
+        //     $this->load->view("index", $data);
+        // } else {
             $input = [
                 'nama_admin'	=> htmlspecialchars($this->input->post('nama_admin')),
                 'alamat'		=> htmlspecialchars($this->input->post('alamat')),
+                'unlat'			=> htmlspecialchars($this->input->post('unlat')),
+                'jabatan'		=> htmlspecialchars($this->input->post('jabatan')),
+                'tgl_lahir'		=> htmlspecialchars($this->input->post('tgl_lahir')),
                 'agama'			=> htmlspecialchars($this->input->post('agama')),
                 'organisasi'	=> htmlspecialchars($this->input->post('organisasi')),
                 'nohp	'		=> htmlspecialchars($this->input->post('no_hp')),
@@ -548,7 +609,7 @@ class Dashboard extends CI_Controller
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data User Berhasil di Update <br>Username : ' . $input['nama_admin'] . '</div>');
             }
             redirect('dashboard/profedit');
-        }
+        // }
     }
 
     // Sertificate

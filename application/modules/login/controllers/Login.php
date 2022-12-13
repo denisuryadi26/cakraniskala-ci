@@ -84,6 +84,7 @@ class Login extends CI_Controller
             'register'	=> 'Register',
             'komunitas'	=> $this->GetKomunitas_model->getKomunitas(),
             'agama'		=> $this->Login_model->viewagama()->result_array(),
+			'unlat'		=> $this->Login_model->viewunlat()->result_array(),
             'program'	=> $this->Login_model->viewprogram()->result_array(),
             'role1'		=> $this->Login_model->view1()->result_array(),
             'view'		=> "v_register"
@@ -116,6 +117,7 @@ class Login extends CI_Controller
                 'register'	=> 'Register',
                 'komunitas'	=> $this->GetKomunitas_model->getKomunitas(),
                 'agama'		=> $this->Login_model->viewagama()->result_array(),
+                'unlat'		=> $this->Login_model->viewunlat()->result_array(),
                 'program'	=> $this->Login_model->viewprogram()->result_array(),
                 'role1'		=> $this->Login_model->view1()->result_array(),
                 'view'		=> "v_register"

@@ -84,67 +84,123 @@
                                     <div class="col-sm row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
-                                            <?= form_error('password', '<small class="text-danger">', '</small>'); ?>
                                         </div>
                                         <div class="col-sm-6">
                                             <input type="password" class="form-control form-control-user" id="repassword" name="repassword" placeholder="Repeat Password">
-                                            <?= form_error('repassword', '<small class="text-danger">', '</small>'); ?>
                                         </div>
                                     </div>
                                     <br>
-                                    <div class="col-sm">
-                                        <label for="nama_admin">Nama Admin</label>
-                                        <input type="text" class="form-control form-control-user" id="nama_admin" name="nama_admin" value="<?= $usersl[0]['nama_admin']; ?>">
-                                        <?= form_error('nama_admin', '<small class="text-danger">', '</small>'); ?>
+                                    <div class="col-sm row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+											<label for="email">Nama Lengkap</label>
+											<input type="text" class="form-control form-control-user" id="nama_admin" name="nama_admin" value="<?= $usersl[0]['nama_admin']; ?>">
+											<?= form_error('nama_admin', '<small class="text-danger">', '</small>'); ?>
+                                        </div>
+                                        <div class="col-sm-6">
+											<label for="jabatan">No Handphone</label>
+											<input type="text" class="form-control form-control-user" id="no_hp" name="no_hp" value="<?= $usersl[0]['nohp']; ?>">
+                                        </div>
                                     </div>
                                     <br>
                                     <div class="col-sm">
                                         <label for="alamat">Alamat</label>
                                         <input type="text" class="form-control form-control-user" id="alamat" name="alamat" value="<?= $usersl[0]['alamat']; ?>">
-                                        <?= form_error('alamat', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                     <br>
-                                    <div class="col-sm">
-                                        <label for="agama">Agama</label>
-                                        <select class="form-control" name="agama" id="agama">
-                                            <option value="">No Selected</option>
-                                            <?php foreach ($agama as $row) : ?>
-                                                <option value="<?php echo $row['id']; ?>"><?php echo $row['keterangan']; ?>
-                                                </option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                        <?= form_error('category', '<small class="text-danger">', '</small>'); ?>
-                                    </div>
-                                    <br>
-                                    <div class="col-sm">
-                                        <label for="organisasi">Organisasi</label>
-                                        <input type="text" class="form-control form-control-user" id="organisasi" name="organisasi" value="<?= $usersl[0]['organisasi']; ?>">
-                                        <?= form_error('organisasi', '<small class="text-danger">', '</small>'); ?>
-                                    </div>
-                                    <br>
-                                    <div class="col-sm">
-                                        <label for="no_hp">Nomor HP</label>
-                                        <input type="text" class="form-control form-control-user" id="no_hp" name="no_hp" value="<?= $usersl[0]['nohp']; ?>">
-                                        <?= form_error('no_hp', '<small class="text-danger">', '</small>'); ?>
-                                    </div>
-                                    <br>
-                                    <div class="col-sm">
+                                    <div class="col-sm row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
                                         <label for="email">Email</label>
-                                        <input type="text" class="form-control form-control-user" id="email" name="email" value="<?= $usersl[0]['email']; ?>">
-                                        <?= form_error('email', '<small class="text-danger">', '</small>'); ?>
+                                            <input type="email" class="form-control form-control-user" id="email" name="email" value="<?= $usersl[0]['email']; ?>">
+                                        </div>
+                                        <div class="col-sm-6">
+                                        <label for="jabatan">Jabatan</label>
+											<select class="form-control" name="jabatan" id="jabatan">
+												<!-- <option value="">Pilih Jabatan</option> -->
+												<?php foreach ($role1 as $row) : ?>
+													<?php if ($usersl[0]['level'] == $row['id']) {
+														$select = "selected";
+													} else {
+														$select = "";
+													};
+													echo "<option value=" . $row['id'] . " $select>" . $row['keterangan'] . "</option>"; ?>
+												<?php endforeach; ?>
+											</select>
+											<?= form_error('category', '<small class="text-danger">', '</small>'); ?>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="col-sm row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+											<label for="email">Unlat</label>
+											<select class="form-control" name="unlat" id="unlat">
+												<!-- <option value="">No Selected</option> -->
+												<?php foreach ($unlat as $row) : ?>
+													<?php if ($usersl[0]['unlat'] == $row['id']) {
+														$select = "selected";
+													} else {
+														$select = "";
+													};
+													echo "<option value=" . $row['id'] . " $select>" . $row['keterangan'] . "</option>"; ?>
+												<?php endforeach; ?>
+											</select>
+											<?= form_error('category', '<small class="text-danger">', '</small>'); ?>
+                                        </div>
+                                        <div class="col-sm-6">
+											<label for="agama">Agama</label>
+											<select class="form-control" name="agama" id="agama">
+												<!-- <option value="">No Selected</option> -->
+												<?php foreach ($agama as $row) : ?>
+													<?php if ($usersl[0]['agama'] == $row['id']) {
+														$select = "selected";
+													} else {
+														$select = "";
+													};
+													echo "<option value=" . $row['id'] . " $select>" . $row['keterangan'] . "</option>"; ?>
+												<?php endforeach; ?>
+											</select>
+											<?= form_error('category', '<small class="text-danger">', '</small>'); ?>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="col-sm row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+											<label for="email">Tempat Lahir</label>
+											<input type="text" class="form-control form-control-user" id="tempatlahir" name="tempatlahir" value="<?= $usersl[0]['tempat']; ?>">
+                                        </div>
+                                        <div class="col-sm-6">
+											<label for="agama">Tanggal Lahir</label>
+											<input type="date" class="form-control datepicker" id="tgl_lahir" name="tgl_lahir" value="<?= $usersl[0]['tgl_lahir']; ?>">
+                                        </div>
                                     </div>
                                     <br>
                                     <div class="col-sm">
                                         <label for="program">Program</label>
                                         <select class="form-control " name="program" id="program">
-                                            <option value="">No Selected</option>
+                                            <!-- <option value="">No Selected</option> -->
                                             <?php foreach ($program as $row) : ?>
-                                                <option value="<?php echo $row['id']; ?>"><?php echo $row['keterangan']; ?>
-                                                </option>
+													<?php if ($usersl[0]['program'] == $row['id']) {
+														$select = "selected";
+													} else {
+														$select = "";
+													};
+													echo "<option value=" . $row['id'] . " $select>" . $row['keterangan'] . "</option>"; ?>
                                             <?php endforeach; ?>
                                             <?= form_error('program', '<small class="text-danger">', '</small>'); ?>
                                         </select>
                                     </div>
+                                    <br>
+
+                                    <div class="col-sm">
+                                        <label for="foto">Foto</label>
+                                        <br>
+										<img src="<?= base_url(''); ?>frontend/assets/images/users/<?= $usersl[0]['foto']; ?>" height="100"><br>
+                                        <?= form_error('foto', '<small class="text-danger">', '</small>'); ?>
+                                        <br>
+                                        <!-- <input type="file" class="form-control" name="foto"> -->
+                                    </div>
+
+
+
                                     <br>
                                     <div class="ln_solid">
                                     </div>

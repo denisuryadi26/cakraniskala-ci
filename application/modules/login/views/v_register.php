@@ -62,11 +62,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 											<div class="form-group col-md-6">
 												<label for="unlat">UNLAT</label>
 												<select class="form-control" name="unlat" id="unlat">
-													<option value="">Pilih Unit Latihan</option>
-													<option value="1">Pusat</option>
-													<option value="2">Kertasena</option>
-													<option value="3">Pondok Pesantren Gaza</option>
+													<option value="">No Selected</option>
+													<?php foreach ($unlat as $row) : ?>
+														<option value="<?php echo $row['id']; ?>"><?php echo $row['keterangan']; ?>
+														</option>
+													<?php endforeach; ?>
 												</select>
+												<?= form_error('category', '<small class="text-danger">', '</small>'); ?>
 											</div>
 											<!-- <input type="hidden" class="form-control datepicker" name="tgl_daftar" required> -->
 											<div class="form-group col-md-6">
@@ -85,7 +87,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 										<div class="form-row">
 											<div class="form-group col-md-6">
 												<label for="tempat">TEMPAT LAHIR</label>
-												<input type="text" class="form-control form-control-user" id="tempatlahir" name="tempatlahir" placeholder="Tempat Tanggal Lahir">
+												<input type="text" class="form-control form-control-user" id="tempatlahir" name="tempatlahir" placeholder="Tempat Lahir">
 												<?= form_error('organisasi', '<small class="text-danger">', '</small>'); ?>
 											</div>
 											<div class="form-group col-md-6">

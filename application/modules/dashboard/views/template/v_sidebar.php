@@ -41,6 +41,14 @@
 		</a>
 	</li>
 
+	<!-- Nav Item - Unlat -->
+	<li class="nav-item">
+		<a class="nav-link" href="<?= base_url('dashboard/unlat'); ?>">
+			<i class="fa fa-fw fa-home"></i>
+			<span>Unlat</span>
+		</a>
+	</li>
+
 	<!-- Nav Item - News -->
 	<li class="nav-item">
 		<a class="nav-link" href="<?= base_url('news'); ?>">

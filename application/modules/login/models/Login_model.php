@@ -34,6 +34,14 @@ class Login_model extends CI_Model
         return $query;
     }
 
+    public function viewunlat()
+    {
+        $this->db->select('*');
+        $this->db->from('unlat');
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function viewagama()
     {
         $this->db->select('*');
@@ -55,7 +63,7 @@ class Login_model extends CI_Model
     {
         return $this->db->insert('users', $input);
     }
-    
+
     // Cek Username
     public function cek_User($username, $no_hp)
     {
@@ -64,14 +72,14 @@ class Login_model extends CI_Model
 
         // Associative array method:
         $where = array('username' => $username, 'nohp' => $no_hp);
-        
+
         $this->db->where($where);
 
         $query = $this->db->get();
 
         return $query;
     }
-    
+
     // Update Password
     public function updatePass($input)
     {
