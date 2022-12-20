@@ -11,14 +11,14 @@
 	<hr class="sidebar-divider my-0">
 
 	<!-- Nav Item - Dashboard -->
-	<li class="nav-item">
+	<li class="nav-item <?= ($breadcumb == 'Dashboard') ? 'active' : NULL ?>">
 		<a class="nav-link" href="<?= base_url('dashboard'); ?>">
 			<i class="fas fa-fw fa-tachometer-alt"></i>
 			<span>Dashboard</span></a>
 	</li>
 
 	<!-- Nav Item - Profile -->
-	<li class="nav-item <?= ($breadcumb == 'Users') ? 'active' : NULL ?>">
+	<li class="nav-item <?= ($breadcumb == 'Profile') ? 'active' : NULL ?>">
 		<a class="nav-link" href="<?= base_url('dashboard/profile'); ?>">
 			<i class="fas fa-fw fa-address-card"></i>
 			<span>Profile</span>
@@ -26,7 +26,7 @@
 	</li>
 
 	<!-- Nav Item - Announcement -->
-	<li class="nav-item">
+	<li class="nav-item <?= ($breadcumb == 'Announcement') ? 'active' : NULL ?>">
 		<a class="nav-link" href="<?= base_url('dashboard/announcement'); ?>">
 			<i class="fas fa-fw fa-folder-open"></i>
 			<span>Announcement</span>
@@ -34,7 +34,7 @@
 	</li>
 
 	<!-- Nav Item - Anggota -->
-	<li class="nav-item">
+	<li class="nav-item <?= ($breadcumb == 'Users') ? 'active' : NULL ?>">
 		<a class="nav-link" href="<?= base_url('dashboard/users'); ?>">
 			<i class="fas fa-fw fa-users"></i>
 			<span>Users</span>
@@ -42,7 +42,7 @@
 	</li>
 
 	<!-- Nav Item - Sabuk -->
-	<li class="nav-item">
+	<li class="nav-item <?= ($breadcumb == 'Sabuk') ? 'active' : NULL ?>">
 		<a class="nav-link" href="<?= base_url('dashboard/sabuk'); ?>">
 			<i class="fas fa-fw fa-user-ninja"></i>
 			<!-- <i class="fa-solid fa-bacon"></i> -->
@@ -51,7 +51,7 @@
 	</li>
 
 	<!-- Nav Item - Unlat -->
-	<li class="nav-item">
+	<li class="nav-item <?= ($breadcumb == 'Unlat') ? 'active' : NULL ?>">
 		<a class="nav-link" href="<?= base_url('dashboard/unlat'); ?>">
 			<i class="fa fa-fw fa-home"></i>
 			<span>Unlat</span>
@@ -59,7 +59,7 @@
 	</li>
 
 	<!-- Nav Item - News -->
-	<li class="nav-item">
+	<li class="nav-item <?= ($breadcumb == 'News') ? 'active' : NULL ?>">
 		<a class="nav-link" href="<?= base_url('news'); ?>">
 			<i class="fas fa-fw fa-paper-plane"></i>
 			<span>News</span>
@@ -67,7 +67,7 @@
 	</li>
 
 	<!-- Nav Item - Slider -->
-	<li class="nav-item">
+	<li class="nav-item <?= ($breadcumb == 'Slider') ? 'active' : NULL ?>">
 		<a class="nav-link" href="<?= base_url('dashboard/slider'); ?>">
 			<i class="fas fa-fw fa-object-group"></i>
 			<span>Slider</span>
@@ -75,7 +75,7 @@
 	</li>
 
 	<!-- Nav Item - Menu -->
-	<li class="nav-item">
+	<li class="nav-item <?= ($breadcumb == 'Menu') ? 'active' : NULL ?>">
 		<a class="nav-link" href="<?= base_url('dashboard/menu'); ?>">
 			<i class="fas fa-fw fa-bars"></i>
 			<span>Menu</span>
