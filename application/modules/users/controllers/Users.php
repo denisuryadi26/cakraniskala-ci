@@ -117,6 +117,7 @@ class Users extends CI_Controller
             'userlist'		=> $this->Users_model->view()->result_array(),
             'usersl'		=> $this->Users_model->view()->result_array(),
 			'role1'			=> $this->Login_model->view1()->result_array(),
+			'sabuk'			=> $this->Login_model->viewsabuk()->result_array(),
 			'unlat'			=> $this->Login_model->viewunlat()->result_array(),
             'agama'			=> $this->Login_model->viewagama()->result_array(),
             'program'		=> $this->Login_model->viewprogram()->result_array(),
@@ -170,6 +171,7 @@ class Users extends CI_Controller
 				$input = [
 					'nama_admin'	=> htmlspecialchars($this->input->post('nama_admin')),
 					'alamat'		=> htmlspecialchars($this->input->post('alamat')),
+					'sabuk'			=> htmlspecialchars($this->input->post('sabuk')),
 					'unlat'			=> htmlspecialchars($this->input->post('unlat')),
 					'level'			=> htmlspecialchars($this->input->post('jabatan')),
 					'tgl_lahir'		=> htmlspecialchars($this->input->post('tgl_lahir')),

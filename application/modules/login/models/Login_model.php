@@ -34,6 +34,14 @@ class Login_model extends CI_Model
         return $query;
     }
 
+    public function viewsabuk()
+    {
+        $this->db->select('*');
+        $this->db->from('sabuk');
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function viewunlat()
     {
         $this->db->select('*');

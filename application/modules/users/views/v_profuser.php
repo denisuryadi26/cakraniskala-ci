@@ -173,20 +173,38 @@
                                         </div>
                                     </div>
                                     <br>
-                                    <div class="col-sm">
-                                        <label for="program">Program</label>
-                                        <select class="form-control " name="program" id="program">
-                                            <!-- <option value="">No Selected</option> -->
-                                            <?php foreach ($program as $row) : ?>
-													<?php if ($usersl[0]['program'] == $row['id']) {
+                                    <div class="col-sm row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+											<label for="sabuk">Sabuk</label>
+											<select class="form-control" name="sabuk" id="sabuk">
+												<!-- <option value="">No Selected</option> -->
+												<?php foreach ($sabuk as $row) : ?>
+													<?php if ($usersl[0]['sabuk'] == $row['id']) {
 														$select = "selected";
 													} else {
 														$select = "";
 													};
 													echo "<option value=" . $row['id'] . " $select>" . $row['keterangan'] . "</option>"; ?>
-                                            <?php endforeach; ?>
-                                            <?= form_error('program', '<small class="text-danger">', '</small>'); ?>
-                                        </select>
+												<?php endforeach; ?>
+											</select>
+											<?= form_error('category', '<small class="text-danger">', '</small>'); ?>
+                                        </div>
+                                        <div class="col-sm-6">
+											<label for="program">Program</label>
+											<select class="form-control " name="program" id="program">
+												<!-- <option value="">No Selected</option> -->
+												<?php foreach ($program as $row) : ?>
+														<?php if ($usersl[0]['program'] == $row['id']) {
+															$select = "selected";
+														} else {
+															$select = "";
+														};
+														echo "<option value=" . $row['id'] . " $select>" . $row['keterangan'] . "</option>"; ?>
+												<?php endforeach; ?>
+												<?= form_error('program', '<small class="text-danger">', '</small>'); ?>
+											</select>
+											<?= form_error('category', '<small class="text-danger">', '</small>'); ?>
+                                        </div>
                                     </div>
                                     <br>
 

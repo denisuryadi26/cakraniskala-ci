@@ -172,6 +172,34 @@ class Dashboard_model extends CI_Model
         return true;
     }
 
+    // Sabuk
+    public function getDataSabuk()
+    {
+        $this->db->select('id AS id,
+		keterangan AS keterangan,
+		');
+        $this->db->from('sabuk');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function insert_sabuk($input)
+    {
+        return $this->db->insert('sabuk', $input);
+    }
+
+    public function update_sabuk($id, $data)
+    {
+        return $this->db->where('id', $id)->update('sabuk', $data);
+    }
+
+    public function delete_sabuk($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('sabuk');
+        return true;
+    }
+
     // Unlat
     public function getDataUnlat()
     {

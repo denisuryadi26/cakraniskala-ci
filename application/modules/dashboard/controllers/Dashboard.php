@@ -125,6 +125,56 @@ class Dashboard extends CI_Controller
     }
 
     // **************
+    // SABUK
+    // **************
+    public function sabuk()
+    {
+        $data	= [
+            'titles'		=> "Dashboard User",
+            'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+            'usersl'		=> $this->Dashboard_model->view()->result_array(),
+            'role'			=> $this->Login_model->view()->result_array(),
+            'sabuk'			=> $this->Dashboard_model->getDataSabuk()->result(),
+            'users'			=> true,
+            'breadcumb'		=> "Sabuk",
+            'view'			=> "v_sabuk"
+        ];
+        $this->load->view('index', $data);
+    }
+
+    public function addSabuk($id = 0)
+    {
+        if ($id != 0) {
+            $data = [
+                'keterangan' => ($this->input->post('keterangan'))
+            ];
+            // echo json_encode($data, true);
+            if ($this->Dashboard_model->update_sabuk($id, $data)) {
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Sabuk Berhasil di Update <br>Judul : ' . $data['keterangan'] . '</div>');
+            };
+            redirect('dashboard/sabuk');
+        } else {
+            $input = [
+                'keterangan' 	=> ($this->input->post('keterangan'))
+            ];
+            if ($this->Dashboard_model->insert_sabuk($input)) {
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Sabuk Berhasil Ditambahkan</div>');
+            }
+            redirect('dashboard/sabuk');
+        }
+    }
+
+    public function deleteSabuk($id)
+    {
+        if ($this->Dashboard_model->delete_sabuk($id)) {
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congrulation your sabuk data has been deleted</div>');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Error To delete your news data</div>');
+        }
+        redirect('dashboard/sabuk');
+    }
+
+    // **************
     // UNLAT
     // **************
     public function unlat()
@@ -150,7 +200,7 @@ class Dashboard extends CI_Controller
             ];
             // echo json_encode($data, true);
             if ($this->Dashboard_model->update_unlat($id, $data)) {
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berita Berhasil di Update <br>Judul : ' . $data['keterangan'] . '</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Unlat Berhasil di Update <br>Judul : ' . $data['keterangan'] . '</div>');
             };
             redirect('dashboard/unlat');
         } else {
@@ -158,7 +208,7 @@ class Dashboard extends CI_Controller
                 'keterangan' 	=> ($this->input->post('keterangan'))
             ];
             if ($this->Dashboard_model->insert_unlat($input)) {
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berita Berhasil Ditambahkan</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Unlat Berhasil Ditambahkan</div>');
             }
             redirect('dashboard/unlat');
         }

@@ -97,7 +97,33 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 										</div>
 
-										<div class="form-group">
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label for="sabuk">SABUK</label>
+												<select class="form-control" name="sabuk" id="sabuk">
+													<option value="">Pilih Sabuk</option>
+													<?php foreach ($sabuk as $row) : ?>
+														<option value="<?php echo $row['id']; ?>"><?php echo $row['keterangan']; ?>
+														</option>
+													<?php endforeach; ?>
+												</select>
+												<?= form_error('sabuk', '<small class="text-danger">', '</small>'); ?>
+											</div>
+											<!-- <input type="hidden" class="form-control datepicker" name="tgl_daftar" required> -->
+											<div class="form-group col-md-6">
+												<label for="inputPassword4">PROGRAM</label>
+												<select class="form-control " name="program" id="program">
+													<option value="">Pilih Program</option>
+													<?php foreach ($program as $row) : ?>
+														<option value="<?php echo $row['id']; ?>"><?php echo $row['keterangan']; ?>
+														</option>
+													<?php endforeach; ?>
+													<?= form_error('program', '<small class="text-danger">', '</small>'); ?>
+												</select>
+											</div>
+										</div>
+
+										<!-- <div class="form-group">
 											<label for="inputPassword4">PROGRAM</label>
 											<select class="form-control " name="program" id="program">
 												<option value="">Pilih Program</option>
@@ -107,7 +133,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 												<?php endforeach; ?>
 												<?= form_error('program', '<small class="text-danger">', '</small>'); ?>
 											</select>
-										</div>
+										</div> -->
 
 										<div class="form-group">
 											<label for="username">USERNAME</label>

@@ -182,6 +182,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+											</div>
 
                                             <!-- Small modal Edit Users -->
                                             <div id="edit<?= $user->id ?>" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="true" style="margin-top: 0">
@@ -242,6 +243,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+											</div>
                                                 <!-- /modals -->
                                             <?php
                                                     $i++;

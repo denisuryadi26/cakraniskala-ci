@@ -41,6 +41,15 @@
 		</a>
 	</li>
 
+	<!-- Nav Item - Sabuk -->
+	<li class="nav-item">
+		<a class="nav-link" href="<?= base_url('dashboard/sabuk'); ?>">
+			<i class="fas fa-fw fa-user-ninja"></i>
+			<!-- <i class="fa-solid fa-bacon"></i> -->
+			<span>Sabuk</span>
+		</a>
+	</li>
+
 	<!-- Nav Item - Unlat -->
 	<li class="nav-item">
 		<a class="nav-link" href="<?= base_url('dashboard/unlat'); ?>">

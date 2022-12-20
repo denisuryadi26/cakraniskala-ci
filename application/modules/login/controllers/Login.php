@@ -84,6 +84,7 @@ class Login extends CI_Controller
             'register'	=> 'Register',
             'komunitas'	=> $this->GetKomunitas_model->getKomunitas(),
             'agama'		=> $this->Login_model->viewagama()->result_array(),
+			'sabuk'		=> $this->Login_model->viewsabuk()->result_array(),
 			'unlat'		=> $this->Login_model->viewunlat()->result_array(),
             'program'	=> $this->Login_model->viewprogram()->result_array(),
             'role1'		=> $this->Login_model->view1()->result_array(),
@@ -102,6 +103,7 @@ class Login extends CI_Controller
         $this->form_validation->set_rules("nama", "Nama", "trim|min_length[5]|required");
         $this->form_validation->set_rules("alamat", "Alamat", "trim|min_length[5]|required");
         $this->form_validation->set_rules("agama", "Agama", "trim|required");
+        $this->form_validation->set_rules("sabuk", "Sabuk", "trim|required");
         $this->form_validation->set_rules("unlat", "Unlat", "trim|required");
         $this->form_validation->set_rules("nohp", "Nohp", "trim|required");
         $this->form_validation->set_rules("username", "Username", "trim|min_length[5]|is_unique[users.username]|required");
@@ -118,6 +120,7 @@ class Login extends CI_Controller
                 'komunitas'	=> $this->GetKomunitas_model->getKomunitas(),
                 'agama'		=> $this->Login_model->viewagama()->result_array(),
                 'unlat'		=> $this->Login_model->viewunlat()->result_array(),
+				'sabuk'		=> $this->Login_model->viewsabuk()->result_array(),
                 'program'	=> $this->Login_model->viewprogram()->result_array(),
                 'role1'		=> $this->Login_model->view1()->result_array(),
                 'view'		=> "v_register"
@@ -148,6 +151,7 @@ class Login extends CI_Controller
                         'tempat'		=> htmlspecialchars($this->input->post('tempatlahir')),
                         'tgl_lahir'		=> htmlspecialchars($this->input->post('tgl_lahir')),
                         'organisasi'	=> htmlspecialchars($this->input->post('organisasi')),
+                        'sabuk'			=> htmlspecialchars($this->input->post('sabuk')),
                         'unlat'			=> htmlspecialchars($this->input->post('unlat')),
                         'email'			=> htmlspecialchars($this->input->post('email')),
                         'nohp	'		=> htmlspecialchars($this->input->post('nohp')),
