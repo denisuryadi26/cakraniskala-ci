@@ -9,7 +9,7 @@ class News extends CI_Controller
 		$this->load->library('form_validation');
 		$this->load->library('upload');
 		$this->load->model('dashboard/Dashboard_model');
-		$this->load->model('komunitas/GetKomunitas_model');
+		$this->load->model('komunitas/Getkomunitas_model');
 		$this->load->model('News_model');
 		$this->load->model('login/Login_model');
 		set_zone();
@@ -24,7 +24,7 @@ class News extends CI_Controller
 	{
 		$data	= [
 			'titles'	=> "Dashboard User",
-			'komunitas'	=> $this->GetKomunitas_model->getKomunitas(),
+			'komunitas'	=> $this->Getkomunitas_model->getKomunitas(),
 			'alluser'	=> $this->Dashboard_model->allUser(),
 			'usersl'	=> $this->Dashboard_model->view()->result_array(),
 			'new'		=> $this->Dashboard_model->news(),
@@ -40,7 +40,7 @@ class News extends CI_Controller
 	{
 		$data	= [
 			'titles'	=> "Dashboard Administrator",
-			'komunitas'	=> $this->GetKomunitas_model->getKomunitas(),
+			'komunitas'	=> $this->Getkomunitas_model->getKomunitas(),
 			'alluser'	=> $this->Dashboard_model->allUser(),
 			'usersl'	=> $this->Dashboard_model->view()->result_array(),
 			'new'		=> $this->Dashboard_model->news(),

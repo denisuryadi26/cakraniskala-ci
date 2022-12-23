@@ -9,7 +9,7 @@ class Dashboard extends CI_Controller
         $this->load->library('form_validation');
         $this->load->library('datatables');
         $this->load->model('Dashboard_model');
-        $this->load->model('komunitas/GetKomunitas_model');
+        $this->load->model('komunitas/Getkomunitas_model');
         $this->load->model('login/Login_model');
         set_zone();
 
@@ -23,7 +23,7 @@ class Dashboard extends CI_Controller
     {
         $data	= [
             'titles'	=> "Dashboard User",
-            'komunitas'	=> $this->GetKomunitas_model->getKomunitas(),
+            'komunitas'	=> $this->Getkomunitas_model->getKomunitas(),
             'allAnggota'	=> $this->Dashboard_model->allAnggota(),
             'allPengurus'	=> $this->Dashboard_model->allPengurus(),
             'allAnggotaAktif'	=> $this->Dashboard_model->allAnggotaAktif(),
@@ -43,7 +43,7 @@ class Dashboard extends CI_Controller
     {
         $data	= [
             'titles'		=> "Dashboard User",
-            'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+            'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
             'usersl'		=> $this->Dashboard_model->view()->result_array(),
             'getProfile'	=> $this->Dashboard_model->getProfile()->result(),
             'profile'		=> true,
@@ -87,7 +87,7 @@ class Dashboard extends CI_Controller
     {
         $data	= [
             'titles'		=> "Dashboard User",
-            'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+            'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
             'usersl'		=> $this->Dashboard_model->view()->result_array(),
             'role'			=> $this->Login_model->view()->result_array(),
             'user'			=> $this->Dashboard_model->getdata()->result(),
@@ -131,7 +131,7 @@ class Dashboard extends CI_Controller
     {
         $data	= [
             'titles'		=> "Dashboard User",
-            'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+            'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
             'usersl'		=> $this->Dashboard_model->view()->result_array(),
             'role'			=> $this->Login_model->view()->result_array(),
             'sabuk'			=> $this->Dashboard_model->getDataSabuk()->result(),
@@ -181,7 +181,7 @@ class Dashboard extends CI_Controller
     {
         $data	= [
             'titles'		=> "Dashboard User",
-            'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+            'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
             'usersl'		=> $this->Dashboard_model->view()->result_array(),
             'role'			=> $this->Login_model->view()->result_array(),
             'unlat'			=> $this->Dashboard_model->getDataUnlat()->result(),
@@ -231,7 +231,7 @@ class Dashboard extends CI_Controller
     {
         $data	= [
             'titles'		=> "Dashboard Administrator",
-            'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+            'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
             'usersl'		=> $this->Dashboard_model->view()->result_array(),
             'announ'		=> $this->db->order_by('created_at', 'DESC')->get('announcement')->result(),
             'announcement'	=> true,
@@ -281,7 +281,7 @@ class Dashboard extends CI_Controller
     {
         $data	= [
             'titles'		=> "Dashboard User",
-            'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+            'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
             'usersl'		=> $this->Dashboard_model->view()->result_array(),
             'news'			=> true,
             'breadcumb'		=> "News",
@@ -351,7 +351,7 @@ class Dashboard extends CI_Controller
     {
         $data	= [
             'titles'		=> "Dashboard User",
-            'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+            'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
             'usersl'		=> $this->Dashboard_model->view()->result_array(),
             'report'		=> true,
             'breadcumb'		=> "Report",
@@ -368,7 +368,7 @@ class Dashboard extends CI_Controller
     {
         $data	= [
             'titles'		=> "Dashboard Administrator",
-            'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+            'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
             'usersl'		=> $this->Dashboard_model->view()->result_array(),
             'slide'			=> $this->db->order_by('id', 'DESC')->get('imgdashboard')->result(),
             'slider'		=> true,
@@ -435,10 +435,10 @@ class Dashboard extends CI_Controller
     {
         $data	= [
             'titles'		=> "Dashboard Administrator",
-            'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+            'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
             'usersl'		=> $this->Dashboard_model->view()->result_array(),
             'slide'			=> $this->db->order_by('id', 'DESC')->get('imgdashboard')->result(),
-            'menu'			=> $this->GetKomunitas_model->getmenu()->result(),
+            'menu'			=> $this->Getkomunitas_model->getmenu()->result(),
             'men'			=> true,
             'breadcumb'		=> "Menu",
             'view'			=> "v_menu"
@@ -491,7 +491,7 @@ class Dashboard extends CI_Controller
     {
         $data = [
             'titles'		=> "Dashboard Administrator",
-            'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+            'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
             'allmessages'	=> $this->Dashboard_model->allMessages(),
             'usersl'		=> $this->Dashboard_model->view()->result_array(),
             'message'		=> $this->Dashboard_model->getmessage()->result(),
@@ -598,7 +598,7 @@ class Dashboard extends CI_Controller
         if ($id != 0) {
             $data = [
                 'titles'		=> "Dashboard Administrator",
-                'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+                'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
                 'allmessages'	=> $this->Dashboard_model->allMessages(),
                 'usersl'		=> $this->Dashboard_model->viewprof($id)->result_array(),
                 'role1'			=> $this->Login_model->view1()->result_array(),
@@ -629,7 +629,7 @@ class Dashboard extends CI_Controller
         // if ($this->form_validation->run() == false) {
         //     $data = [
         //         'titles'		=> "Dashboard Administrator",
-        //         'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+        //         'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
         //         'allmessages'	=> $this->Dashboard_model->allMessages(),
         //         'usersl'		=> $this->Dashboard_model->viewprof($id)->result_array(),
         //         'agama'			=> $this->Login_model->viewagama()->result_array(),
@@ -667,7 +667,7 @@ class Dashboard extends CI_Controller
     // {
     // 	$data = [
     // 		'titles'		=> "Dashboard Administrator",
-    // 		'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+    // 		'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
     // 		'allmessages'	=> $this->Dashboard_model->allMessages(),
     // 		'sertif'		=> TRUE,
     // 		'breadcumb'		=> "Sertif",

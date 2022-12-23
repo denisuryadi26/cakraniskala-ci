@@ -10,7 +10,7 @@ class Users extends CI_Controller
         $this->load->library('datatables');
         $this->load->library('upload');
         $this->load->model('Users_model');
-        $this->load->model('komunitas/GetKomunitas_model');
+        $this->load->model('komunitas/Getkomunitas_model');
         $this->load->model('dashboard/Dashboard_model');
         $this->load->model('login/Login_model');
         set_zone();
@@ -25,7 +25,7 @@ class Users extends CI_Controller
     {
         $data	= [
             'titles'	=> "Dashboard User",
-            'komunitas'	=> $this->GetKomunitas_model->getKomunitas(),
+            'komunitas'	=> $this->Getkomunitas_model->getKomunitas(),
             'message'	=> $this->Users_model->getmessage()->result(),
             'hassert'	=> $this->Users_model->hassert()->result(),
             'usersl'	=> $this->Users_model->view()->result_array(),
@@ -41,7 +41,7 @@ class Users extends CI_Controller
     {
         $data	= [
             'titles'		=> "Dashboard User",
-            'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+            'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
             'allmessages'	=> $this->Users_model->allMessages(),
             'message'		=> $this->Users_model->getdata()->result(),
             'userlist'		=> $this->Users_model->view()->result_array(),
@@ -111,7 +111,7 @@ class Users extends CI_Controller
     {
         $data	= [
             'titles'		=> "Dashboard User",
-            'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+            'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
             'allmessages'	=> $this->Users_model->allMessages(),
             'message'		=> $this->Users_model->getdata()->result(),
             'userlist'		=> $this->Users_model->view()->result_array(),
@@ -144,7 +144,7 @@ class Users extends CI_Controller
         // if ($this->form_validation->run() == false) {
         //     $data = [
         //         'titles'		=> "Dashboard Administrator",
-        //         'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+        //         'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
         //         'allmessages'	=> $this->Dashboard_model->allMessages(),
         //         'usersl'		=> $this->Dashboard_model->viewprof($id)->result_array(),
         //         'agama'			=> $this->Login_model->viewagama()->result_array(),

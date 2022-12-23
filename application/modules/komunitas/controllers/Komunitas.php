@@ -10,7 +10,7 @@ class Komunitas extends CI_Controller
 		$this->load->library('datatables');
 		//load libary pagination
 		$this->load->library('pagination');
-		$this->load->model('GetKomunitas_model');
+		$this->load->model('Getkomunitas_model');
 		$this->load->model('dashboard/Dashboard_model');
 	}
 
@@ -18,12 +18,12 @@ class Komunitas extends CI_Controller
 	{
 		$data = [
 			'title'         => 'Home',
-			'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+			'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
 			'berita'        => $this->db->order_by('id_berita', 'DESC')->limit(3)->get('tbl_berita')->result(),
 			'lain'          => $this->db->where('id', 1)->get('lain_lain')->row(),
-			'image'			=> $this->GetKomunitas_model->imgDash()->result(),
+			'image'			=> $this->Getkomunitas_model->imgDash()->result(),
 			'aktivitas'     => $this->db->order_by('id_aktivitas', 'DESC')->limit(5)->get('aktivitas')->result(),
-			'menu'			=> $this->GetKomunitas_model->getmenu()->result(),
+			'menu'			=> $this->Getkomunitas_model->getmenu()->result(),
 			'view'			=> 'v_komunitas'
 		];
 
@@ -34,11 +34,11 @@ class Komunitas extends CI_Controller
 	{
 		$data = [
 			'title'         => 'Profile',
-			'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+			'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
 			'berita'        => $this->db->order_by('id_berita', 'DESC')->limit(3)->get('tbl_berita')->result(),
 			'lain'          => $this->db->where('id', 1)->get('lain_lain')->row(),
-			'image'			=> $this->GetKomunitas_model->imgDash()->result(),
-			'menu'			=> $this->GetKomunitas_model->getmenu()->result(),
+			'image'			=> $this->Getkomunitas_model->imgDash()->result(),
+			'menu'			=> $this->Getkomunitas_model->getmenu()->result(),
 			'aktivitas'     => $this->db->order_by('id_aktivitas', 'DESC')->limit(5)->get('aktivitas')->result(),
 			'view'			=> 'v_profile'
 		];
@@ -48,15 +48,15 @@ class Komunitas extends CI_Controller
 
 	function view($id)
 	{
-		$row = $this->GetKomunitas_model->get_by_id($id);
+		$row = $this->Getkomunitas_model->get_by_id($id);
 		if ($row) {
 			$data = array(
 				'title'			=> 'News',
-				'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+				'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
 				'berita'        => $this->db->where('id_berita', $id)->order_by('id_berita', 'DESC')->limit(3)->get('tbl_berita')->result(),
 				'lain'          => $this->db->where('id', 1)->get('lain_lain')->row(),
-				'image'			=> $this->GetKomunitas_model->imgDash()->result(),
-				'menu'			=> $this->GetKomunitas_model->getmenu()->result(),
+				'image'			=> $this->Getkomunitas_model->imgDash()->result(),
+				'menu'			=> $this->Getkomunitas_model->getmenu()->result(),
 				'aktivitas'     => $this->db->order_by('id_aktivitas', 'DESC')->limit(5)->get('aktivitas')->result(),
 				'view'				=> "v_viewnews"
 			);
@@ -69,11 +69,11 @@ class Komunitas extends CI_Controller
 	{
 		$data = [
 			'title'         => 'News',
-			'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+			'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
 			'berita'        => $this->db->order_by('id_berita', 'DESC')->get('tbl_berita')->result(),
 			'lain'          => $this->db->where('id', 1)->get('lain_lain')->row(),
-			'image'			=> $this->GetKomunitas_model->imgDash()->result(),
-			'menu'			=> $this->GetKomunitas_model->getmenu()->result(),
+			'image'			=> $this->Getkomunitas_model->imgDash()->result(),
+			'menu'			=> $this->Getkomunitas_model->getmenu()->result(),
 			'aktivitas'     => $this->db->order_by('id_aktivitas', 'DESC')->limit(5)->get('aktivitas')->result(),
 			'view'			=> 'v_newsall'
 		];
@@ -111,8 +111,8 @@ class Komunitas extends CI_Controller
 
 		$data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
-		//panggil function get_news_list yang ada pada model News_model. 
-		$data['data'] = $this->GetKomunitas_model->get_news_list($config["per_page"], $data['page']);
+		//panggil function get_news_list yang ada pada model News_model.
+		$data['data'] = $this->Getkomunitas_model->get_news_list($config["per_page"], $data['page']);
 
 		$data['pagination'] = $this->pagination->create_links();
 
@@ -125,12 +125,12 @@ class Komunitas extends CI_Controller
 	{
 		$data = [
 			'title'         => 'Anggota',
-			'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+			'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
 			'usersl'		=> $this->Dashboard_model->getdata()->result_array(),
 			'berita'        => $this->db->order_by('id_berita', 'DESC')->limit(3)->get('tbl_berita')->result(),
 			'lain'          => $this->db->where('id', 1)->get('lain_lain')->row(),
-			'image'			=> $this->GetKomunitas_model->imgDash()->result(),
-			'menu'			=> $this->GetKomunitas_model->getmenu()->result(),
+			'image'			=> $this->Getkomunitas_model->imgDash()->result(),
+			'menu'			=> $this->Getkomunitas_model->getmenu()->result(),
 			'aktivitas'     => $this->db->order_by('id_aktivitas', 'DESC')->limit(5)->get('aktivitas')->result(),
 			'view'			=> 'v_anggota'
 		];
@@ -141,22 +141,22 @@ class Komunitas extends CI_Controller
 	{
 		$data = [
 			'title'         => 'Menu',
-			'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+			'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
 			'usersl'		=> $this->Dashboard_model->viewanggota()->result_array(),
 			'berita'        => $this->db->order_by('id_berita', 'DESC')->limit(3)->get('tbl_berita')->result(),
 			'lain'          => $this->db->where('id', 1)->get('lain_lain')->row(),
-			'image'			=> $this->GetKomunitas_model->imgDash()->result(),
-			'menu'			=> $this->GetKomunitas_model->getmenu()->result(),
+			'image'			=> $this->Getkomunitas_model->imgDash()->result(),
+			'menu'			=> $this->Getkomunitas_model->getmenu()->result(),
 			'aktivitas'     => $this->db->order_by('id_aktivitas', 'DESC')->limit(5)->get('aktivitas')->result(),
 			'view'			=> 'menu'
 		];
-		$data['menulist'] = $this->GetKomunitas_model->get_by_id_menu($id);
+		$data['menulist'] = $this->Getkomunitas_model->get_by_id_menu($id);
 		$this->load->view('index', $data);
 	}
 
 	// function menu()
 	// {
-	// 	$data['menu'] = $this->GetKomunitas_model->getmenu()->result();
+	// 	$data['menu'] = $this->Getkomunitas_model->getmenu()->result();
 	// 	echo json_encode($data['menu'][0]->menu);
 	// }
 }

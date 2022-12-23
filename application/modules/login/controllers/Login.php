@@ -9,7 +9,7 @@ class Login extends CI_Controller
         $this->load->library('form_validation');
         $this->load->library('datatables');
         $this->load->model('Login_model');
-        $this->load->model('komunitas/GetKomunitas_model');
+        $this->load->model('komunitas/Getkomunitas_model');
         if (($this->session->userdata('aktif') != true) && ($this->session->userdata('level') == 1)) {
             redirect('dashboard');
         } elseif (($this->session->userdata('aktif') != true) && ($this->session->userdata('level') == 2)) {
@@ -22,7 +22,7 @@ class Login extends CI_Controller
         $data 	= [
             'titles'	=> 'Login',
             'login'		=> 'Log In',
-            'komunitas'	=> $this->GetKomunitas_model->getKomunitas(),
+            'komunitas'	=> $this->Getkomunitas_model->getKomunitas(),
             'view'		=> "v_login"
         ];
         $this->load->view("index", $data);
@@ -38,7 +38,7 @@ class Login extends CI_Controller
             $data 	= [
                 'titles'	=> 'Login',
                 'login'		=> 'Log In',
-                'komunitas'	=> $this->GetKomunitas_model->getKomunitas(),
+                'komunitas'	=> $this->Getkomunitas_model->getKomunitas(),
                 'view'		=> "v_login"
             ];
             $this->load->view("index", $data);
@@ -82,7 +82,7 @@ class Login extends CI_Controller
         $data 	= [
             'titles'	=> 'Register',
             'register'	=> 'Register',
-            'komunitas'	=> $this->GetKomunitas_model->getKomunitas(),
+            'komunitas'	=> $this->Getkomunitas_model->getKomunitas(),
             'agama'		=> $this->Login_model->viewagama()->result_array(),
 			'sabuk'		=> $this->Login_model->viewsabuk()->result_array(),
 			'unlat'		=> $this->Login_model->viewunlat()->result_array(),
@@ -118,7 +118,7 @@ class Login extends CI_Controller
             $data 	= [
                 'titles'	=> 'Login',
                 'register'	=> 'Register',
-                'komunitas'	=> $this->GetKomunitas_model->getKomunitas(),
+                'komunitas'	=> $this->Getkomunitas_model->getKomunitas(),
                 'agama'		=> $this->Login_model->viewagama()->result_array(),
                 'unlat'		=> $this->Login_model->viewunlat()->result_array(),
 				'sabuk'		=> $this->Login_model->viewsabuk()->result_array(),
@@ -183,7 +183,7 @@ class Login extends CI_Controller
         $data 	= [
             'titles'	=> 'Lupa Password',
             'forgot'	=> 'Lupas Password',
-            'komunitas'	=> $this->GetKomunitas_model->getKomunitas(),
+            'komunitas'	=> $this->Getkomunitas_model->getKomunitas(),
             'agama'		=> $this->Login_model->viewagama()->result_array(),
             'program'	=> $this->Login_model->viewprogram()->result_array(),
             'role1'		=> $this->Login_model->view1()->result_array(),
@@ -203,7 +203,7 @@ class Login extends CI_Controller
             $data 	= [
                 'titles'	=> 'Login',
                 'forgot'	=> 'Lupa Password',
-                'komunitas'	=> $this->GetKomunitas_model->getKomunitas(),
+                'komunitas'	=> $this->Getkomunitas_model->getKomunitas(),
                 'view'		=> "v_forget"
             ];
             $this->load->view("index", $data);

@@ -9,7 +9,7 @@ class Addnews extends CI_Controller
         $this->load->library('form_validation');
         $this->load->library('upload');
         $this->load->model('Dashboard_model');
-        $this->load->model('komunitas/GetKomunitas_model');
+        $this->load->model('komunitas/Getkomunitas_model');
         $this->load->model('login/Login_model');
         set_zone();
 
@@ -23,7 +23,7 @@ class Addnews extends CI_Controller
     {
         $data = [
             'titles'		=> "Dashboard Administrator",
-            'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+            'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
             'usersl'		=> $this->Dashboard_model->view()->result_array(),
             'addNews'		=> true,
             'breadcumb'		=> "Add News",
@@ -31,12 +31,12 @@ class Addnews extends CI_Controller
         ];
         $this->load->view("index", $data);
     }
-    
+
     public function edit($id)
     {
         $data = [
             'titles'		=> "Dashboard Administrator",
-            'komunitas'		=> $this->GetKomunitas_model->getKomunitas(),
+            'komunitas'		=> $this->Getkomunitas_model->getKomunitas(),
             'usersl'		=> $this->Dashboard_model->view()->result_array(),
             'berita'		=> $this->Dashboard_model->viewberita($id)->result_array(),
             'addNews'		=> true,
@@ -86,7 +86,7 @@ class Addnews extends CI_Controller
         // 	redirect('addnews');
         // }
     }
-    
+
     public function publishedit($id)
     {
         $input = [

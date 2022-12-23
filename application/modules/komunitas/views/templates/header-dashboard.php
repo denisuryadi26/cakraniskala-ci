@@ -77,7 +77,7 @@
 					<li class="nav-item <?= ($title == 'Login') ? 'active' : NULL ?>"><a href="<?= base_url('login') ?>" class="nav-link">Login</a></li>
 
 
-					<!-- $data['menu'] = $this->GetKomunitas_model->getmenu()->result(); -->
+					<!-- $data['menu'] = $this->Getkomunitas_model->getmenu()->result(); -->
 					<?php
 					foreach ($menu as $value) {; ?>
 						<!-- echo $value->menu; -->

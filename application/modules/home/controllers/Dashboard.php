@@ -9,7 +9,7 @@ class Dashboard extends CI_Controller
 		$this->load->library('form_validation');
 		$this->load->library('datatables');
 		$this->load->model('Dashboard_model');
-		$this->load->model('komunitas/GetKomunitas_model');
+		$this->load->model('komunitas/Getkomunitas_model');
 
 		if ($this->session->userdata('aktif') != TRUE) {
 			$this->session->set_flashdata('message', 'Harap login untuk melanjutkan');
@@ -21,7 +21,7 @@ class Dashboard extends CI_Controller
 	{
 		$data	= [
 			'titles'	=> "Dashboard User",
-			'komunitas'	=> $this->GetKomunitas_model->getKomunitas(),
+			'komunitas'	=> $this->Getkomunitas_model->getKomunitas(),
 			'home'		=> TRUE,
 			'view'		=> "v_dashboard",
 			'breadcumb'	=> "Dashboard"
