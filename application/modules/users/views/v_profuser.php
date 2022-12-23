@@ -102,6 +102,11 @@
                                         </div>
                                     </div>
                                     <br>
+									<div class="col-sm">
+										<label for="nik">NIK</label>
+                                        <input type="text" class="form-control form-control-user" id="nik" name="nik" value="<?= $usersl[0]['nik']; ?>">
+									</div>
+                                    <br>
                                     <div class="col-sm">
                                         <label for="alamat">Alamat</label>
                                         <input type="text" class="form-control form-control-user" id="alamat" name="alamat" value="<?= $usersl[0]['alamat']; ?>">

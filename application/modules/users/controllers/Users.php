@@ -168,8 +168,11 @@ class Users extends CI_Controller
 			// 	redirect('users/profile');
 			// } else {
 				// $image = $this->input->post('image');
+		$password = $this->input->post('password');
+		if ($password != '') {
 				$input = [
 					'nama_admin'	=> htmlspecialchars($this->input->post('nama_admin')),
+					'nik'			=> htmlspecialchars($this->input->post('nik')),
 					'alamat'		=> htmlspecialchars($this->input->post('alamat')),
 					'sabuk'			=> htmlspecialchars($this->input->post('sabuk')),
 					'unlat'			=> htmlspecialchars($this->input->post('unlat')),
@@ -189,6 +192,30 @@ class Users extends CI_Controller
 					$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data User Berhasil di Update <br>Username : ' . $input['nama_admin'] . '</div>');
 				}
 				redirect('users/profile');
+			} else {
+
+				$input = [
+					'nama_admin'	=> htmlspecialchars($this->input->post('nama_admin')),
+					'nik'			=> htmlspecialchars($this->input->post('nik')),
+					'alamat'		=> htmlspecialchars($this->input->post('alamat')),
+					'sabuk'			=> htmlspecialchars($this->input->post('sabuk')),
+					'unlat'			=> htmlspecialchars($this->input->post('unlat')),
+					'level'			=> htmlspecialchars($this->input->post('jabatan')),
+					'tgl_lahir'		=> htmlspecialchars($this->input->post('tgl_lahir')),
+					'agama'			=> htmlspecialchars($this->input->post('agama')),
+					'organisasi'	=> htmlspecialchars($this->input->post('organisasi')),
+					'nohp	'		=> htmlspecialchars($this->input->post('no_hp')),
+					'email'			=> htmlspecialchars($this->input->post('email')),
+					'program'		=> htmlspecialchars($this->input->post('program')),
+					// 'foto'			=> $this->upload->data('file_name')
+					// 'foto'			=> $this->input->post('image')
+				];
+				// print_r($input);die();
+				if ($this->Dashboard_model->update_prof($id, $input)) {
+					$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data User Berhasil di Update <br>Username : ' . $input['nama_admin'] . '</div>');
+				}
+				redirect('users/profile');
+			}
 			// }
         // }
     }

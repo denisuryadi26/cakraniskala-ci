@@ -107,7 +107,7 @@
                                                     <td><?= ($status === 'AKTIF') ? '<div class="badge badge-success">AKTIF</div>' : '<div class="badge badge-danger">TIDAK AKTIF</div>' ; ?></td>
                                                     <td><?= $level; ?></td>
                                                     <td>
-                                                        <a data-toggle="modal" href="#detail<?= $user->id ?>" class="btn btn-primary btn-sm"><i class="fa fa-info"></i> Detail</a>
+                                                        <a data-toggle="modal" href="#detail<?= $user->id ?>" class="btn btn-primary btn-sm"><i class="fas fa-fw fa-address-card"></i> Detail</a>
                                                         <a data-toggle="modal" href="#edit<?= $user->id ?>" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i> Edit</a>
                                                         <?php if ($this->session->userdata('username') == 'admin') {
                                                         ; ?>
@@ -132,6 +132,12 @@
                                                         </div>
                                                         <div class="modal-body form-horizontal form-label-left">
 
+
+															<div class="col-md-2 col-sm-4 col-6 p-2">
+																<!-- <img class="img-thumbnail" src="<?= ($datapegawai['image'] == 'default.png' ? base_url('assets/img/default-profile.png') : base_url('storage/profile/' . $datapegawai['image'])); ?>" class="card-img"> -->
+																<img class="img-thumbnail" src="<?= base_url(''); ?>frontend/assets/images/users/<?= $user->foto ?>" class="card-img">
+															</div>
+
 															<div class="form-row">
 																<div class="form-group col-md-6">
 																	<label for="nama">NAMA LENGKAP</label>
@@ -147,6 +153,20 @@
 																</div>
 															</div>
 
+                                                            <div class="item form-group">
+                                                                <label for="password" style="text-align: right">NIK</label>
+                                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                    <input type="text" name="nik" class="form-control col-md-12 col-xs-12" required="required" value="<?= $user->nik ?>" disabled>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="item form-group">
+                                                                <label for="password" style="text-align: right">ALAMAT</label>
+                                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                    <input type="text" name="username" class="form-control col-md-12 col-xs-12" required="required" value="<?= $user->alamat ?>" disabled>
+                                                                </div>
+                                                            </div>
+
 															<div class="form-row">
 																<div class="form-group col-md-6">
 																	<label for="nama">EMAIL</label>
@@ -155,29 +175,67 @@
 																	</div>
 																</div>
 																<div class="form-group col-md-6">
-																	<label for="nohp">ROLE</label>
+																	<label for="nohp">JABATAN</label>
 																	<div class="col-md-9 col-sm-9 col-xs-12">
 																		<input type="text" name="namaadmin" class="form-control" required="required" value="<?= $user->level ?>" disabled>
 																	</div>
 																</div>
 															</div>
-                                                            <div class="item form-group">
-                                                                <label for="password" style="text-align: right">ALAMAT</label>
-                                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                    <input type="text" name="username" class="form-control col-md-12 col-xs-12" required="required" value="<?= $user->alamat ?>" disabled>
-                                                                </div>
-                                                            </div>
-                                                            <div class="item form-group">
-                                                                <label for="password" style="text-align: right">Status</label>
-                                                                <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                    <input type="text" name="username" class="form-control col-md-7 col-xs-12" required="required" value="<?= $user->status ?>" disabled>
-                                                                </div>
-                                                            </div>
+
+															<div class="form-row">
+																<div class="form-group col-md-6">
+																	<label for="nama">UNLAT</label>
+																	<div class="col-md-9 col-sm-9 col-xs-12">
+																		<input type="text" name="unlat" class="form-control" required="required" value="<?= $user->unlat ?>" disabled>
+																	</div>
+																</div>
+																<div class="form-group col-md-6">
+																	<label for="nohp">AGAMA</label>
+																	<div class="col-md-9 col-sm-9 col-xs-12">
+																		<input type="text" name="agama" class="form-control" required="required" value="<?= $user->agama ?>" disabled>
+																	</div>
+																</div>
+															</div>
+
+															<div class="form-row">
+																<div class="form-group col-md-6">
+																	<label for="nama">TEMPAT LAHIR</label>
+																	<div class="col-md-9 col-sm-9 col-xs-12">
+																		<input type="text" name="tempat" class="form-control" required="required" value="<?= $user->tempat ?>" disabled>
+																	</div>
+																</div>
+																<div class="form-group col-md-6">
+																	<label for="nohp">TANGGAL LAHIR</label>
+																	<div class="col-md-9 col-sm-9 col-xs-12">
+																		<input type="text" name="tgl_lahir" class="form-control" required="required" value="<?= $user->tgl_lahir ?>" disabled>
+																	</div>
+																</div>
+															</div>
+
+															<div class="form-row">
+																<div class="form-group col-md-6">
+																	<label for="nama">SABUK</label>
+																	<div class="col-md-9 col-sm-9 col-xs-12">
+																		<input type="text" name="sabuk" class="form-control" required="required" value="<?= $user->sabuk ?>" disabled>
+																	</div>
+																</div>
+																<div class="form-group col-md-6">
+																	<label for="nohp">PROGRAM</label>
+																	<div class="col-md-9 col-sm-9 col-xs-12">
+																		<input type="text" name="program" class="form-control" required="required" value="<?= $user->program ?>" disabled>
+																	</div>
+																</div>
+															</div>
+
+															<div class="form-row">
+																<div class="form-group col-md-6">
+																	<label for="nama">STATUS</label>
+																	<div class="col-md-9 col-sm-9 col-xs-12">
+																		<input type="text" name="sabuk" class="form-control" required="required" value="<?= $user->status ?>" disabled>
+																	</div>
+																</div>
+															</div>
                                                             <br>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                <button type="submit" class="btn btn-primary">Edit</button>
-                                                            </div>
                                                             <?= form_close(); ?>
                                                         </div>
                                                     </div>

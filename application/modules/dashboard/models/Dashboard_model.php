@@ -137,14 +137,17 @@ class Dashboard_model extends CI_Model
         $this->db->select('users.id AS id,
 		users.nama_admin AS nama_admin,
 		users.alamat AS alamat,
+		users.nik AS nik,
 		agama.keterangan AS agama,
 		users.tempat AS tempat,
 		users.organisasi AS organisasi,
 		users.email AS email,
+		unlat.keterangan AS unlat,
+		users.tgl_lahir AS tgl_lahir,
 		users.nohp AS nohp,
 		program.keterangan AS program,
-		users.alamat AS alamat,
 		users.username AS username,
+		sabuk.keterangan AS sabuk,
 		users.status AS status,
 		users.password AS password,
 		users.foto AS foto,
@@ -152,8 +155,12 @@ class Dashboard_model extends CI_Model
 		');
         $this->db->from('users');
         $this->db->join('role', 'users.level=role.id', 'left');
-        $this->db->join('agama', 'users.agama=agama.id', 'inner');
-        $this->db->join('program', 'users.program=program.id', 'inner');
+        $this->db->join('agama', 'users.agama=agama.id', 'left');
+        $this->db->join('program', 'users.program=program.id', 'left');
+        $this->db->join('sabuk', 'users.sabuk=sabuk.id', 'left');
+        $this->db->join('unlat', 'users.unlat=unlat.id', 'left');
+        $this->db->where_in('users.level', array('2', '3'));
+        $this->db->order_by('users.id', 'DESC');
         $query = $this->db->get();
         return $query;
     }

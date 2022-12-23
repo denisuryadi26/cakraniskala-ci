@@ -34,6 +34,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 										</div>
 
 										<div class="form-group">
+											<label for="inputPassword4">NIK</label>
+											<input type="number" class="form-control form-control-user" id="nik" name="nik" placeholder="Masukan NIK KTP (16 Nomor)">
+											<?= form_error('nik', '<small class="text-danger">', '</small>'); ?>
+										</div>
+
+										<div class="form-group">
 											<label for="inputPassword4">ALAMAT</label>
 											<input type="text" class="form-control form-control-user" id="alamat" name="alamat" placeholder="Alamat...">
 											<?= form_error('alamat', '<small class="text-danger">', '</small>'); ?>

@@ -102,6 +102,7 @@ class Login extends CI_Controller
         ];
         $this->form_validation->set_rules("nama", "Nama", "trim|min_length[5]|required");
         $this->form_validation->set_rules("alamat", "Alamat", "trim|min_length[5]|required");
+        $this->form_validation->set_rules("nik", "Nik", "trim|required");
         $this->form_validation->set_rules("agama", "Agama", "trim|required");
         $this->form_validation->set_rules("sabuk", "Sabuk", "trim|required");
         $this->form_validation->set_rules("unlat", "Unlat", "trim|required");
@@ -146,6 +147,7 @@ class Login extends CI_Controller
                 } else {
                     $input = [
                         'nama_admin'	=> htmlspecialchars($this->input->post('nama')),
+                        'nik'			=> htmlspecialchars($this->input->post('nik')),
                         'alamat'		=> htmlspecialchars($this->input->post('alamat')),
                         'agama'			=> htmlspecialchars($this->input->post('agama')),
                         'tempat'		=> htmlspecialchars($this->input->post('tempatlahir')),
