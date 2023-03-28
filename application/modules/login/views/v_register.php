@@ -9,7 +9,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<div class="row">
 
 					<div class="col-lg">
-						<div class="p-5">
+						<div class="p-2">
 							<div class="card">
 								<div class="card-header bg-info">
 									<h4>Formulir Pendaftaran</h4>
@@ -17,7 +17,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 								<?= $this->session->flashdata('message'); ?>
 								<form action="<?php echo base_url('login/regkom'); ?>" method="POST" enctype="multipart/form-data">
 									<div class="card-body">
-										<input type="date" name="tgl_daftar" class="form-control datepicker" value="" hidden >
+										<input type="date" name="tgl_daftar" class="form-control datepicker" value="" hidden>
 
 										<div class="form-row">
 											<div class="form-group col-md-6">
@@ -41,7 +41,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 										<div class="form-group">
 											<label for="inputPassword4">ALAMAT</label>
-											<input type="text" class="form-control form-control-user" id="alamat" name="alamat" placeholder="Alamat...">
+											<textarea class="form-control form-control-user" id="alamat" name="alamat" placeholder="Alamat..."></textarea>
 											<?= form_error('alamat', '<small class="text-danger">', '</small>'); ?>
 										</div>
 
@@ -164,13 +164,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 										<div class="form-group">
 											<label for="password" class="control-label">FOTO</label>
 											<!-- <div class="col-md-9 col-sm-9"> -->
-												<input type="file" class="form-control" required name="image">
+											<input type="file" class="form-control" required name="image">
 											<!-- </div> -->
 										</div>
-									<div class="card-header bg-white">
-										<!-- <button id='btnsimpan' type="submit" class="btn btn-lg btn-primary">DAFTAR</button> -->
-										<button type="submit" class="btn btn-primary btn-user btn-block"> DAFTAR</button>
-									</div>
+										<div class="card-header bg-white">
+											<!-- <button id='btnsimpan' type="submit" class="btn btn-lg btn-primary">DAFTAR</button> -->
+											<button type="submit" class="btn btn-primary btn-user btn-block"> DAFTAR</button>
+										</div>
 								</form>
 								<br>
 								<div class="text-center">
