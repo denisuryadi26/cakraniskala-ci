@@ -33,11 +33,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 								</div>
 							</form>
 							<div class="text-center">
-								<!-- <button class="btn btn-lg btn-info"> -->
-									<a href="<?= base_url('login/forgotPass');?>"> Lupa Password </a>
-								<!-- </button> -->
+								<!-- <a href="<?= base_url('login/forgotPass'); ?>"> Lupa Password </a>
 								<br>
-								<a href="<?= base_url(); ?>">Back to Dashboard</a>
+								<a href="<?= base_url(); ?>">Back to Dashboard</a> -->
+								<br>
+								<a href="<?= base_url('login/register'); ?>">Belum Punya Akun? Daftar Disini</a>
 							</div>
 						</div>
 					</div>
